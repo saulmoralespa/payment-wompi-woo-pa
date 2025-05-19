@@ -24,25 +24,25 @@ jobs:
         options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-        - name: Set up PHP
-          uses: shivammathur/setup-php@v2
-          with:
-          php-version: '8.1'
-          extensions: mbstring, dom, curl
-          tools: composer, phpunit
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+        php-version: '8.1'
+        extensions: mbstring, dom, curl
+        tools: composer, phpunit
 
-        - name: Install dependencies
-          run: |
-          composer install --no-interaction --prefer-dist
+      - name: Install dependencies
+        run: |
+        composer install --no-interaction --prefer-dist
 
-        - name: Download and Extract WooCommerce
-          run: |
-            curl -o woocommerce.zip https://downloads.wordpress.org/plugin/woocommerce.9.7.1.zip
-            unzip woocommerce.zip
-            mv woocommerce ..    
+      - name: Download and Extract WooCommerce
+        run: |
+          curl -o woocommerce.zip https://downloads.wordpress.org/plugin/woocommerce.9.7.1.zip
+          unzip woocommerce.zip
+          mv woocommerce ..    
 
-        - name: Run tests
-          run: vendor/bin/phpunit --testdox
+      - name: Run tests
+        run: vendor/bin/phpunit --testdox
