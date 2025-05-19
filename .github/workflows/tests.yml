@@ -30,9 +30,9 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-        php-version: '8.1'
-        extensions: mbstring, dom, curl
-        tools: composer, phpunit
+          php-version: '8.1'
+          extensions: mbstring, dom, curl
+          tools: composer, phpunit
 
       - name: Install dependencies
         run: |
